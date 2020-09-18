@@ -1,0 +1,36 @@
+<%= link_to("Home", books_path, :class => 'back-link') %>
+
+<div class="book edit">
+  <h2>Update Book</h2>
+
+  <%= form_for(@book) do |f| %>
+
+    <table summary="Book form fields">
+      <tr>
+        <th>Title</th>
+        <td><%= f.text_field(:title, { :required => true }) %></td>
+      </tr>
+      <tr>
+        <th>Author</th>
+        <td><%= f.text_field(:author, { :required => true }) %></td>
+      </tr>
+      <tr>
+        <th>Genre</th>
+        <td><%= f.select(:genre, ['Young Adult', 'Fantasy', 'Children\'s', 'Literary Fiction', 'Science Fiction', 'Thrillers/Suspense', 'Middle Grade', 'Romance', 'Picture Book', 'Historical', 'Other'], {}, { :class => 'my_style_class', :required => true }) %></td>
+      </tr>
+      <tr>
+        <th>Price</th>
+        <td><%= f.text_field(:price, { :required => true }) %></td>
+      </tr>
+      <tr>
+        <th>Published Date</th>
+        <td><%= f.date_field(:published_date, { :value => @book.published_date, :required => true }) %></td>
+      </tr>
+    </table>
+
+    <div class="form-buttons">
+      <%= f.submit("Update Book") %>
+    </div>
+
+  <% end %>
+</div>
